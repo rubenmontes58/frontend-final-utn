@@ -1,0 +1,429 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid p-0 m-0">
+
+ 
+
+          
+
+
+        <form class="d-flex ms-auto me-3">
+
+          <form class="d-flex ms-auto me-3">
+         
+          </form>
+        
+        </form>
+      </div>
+      
+  
+
+  <!-- lista de figuritas -->
+  <div class="row mt-5 p-3">
+    
+       <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#createPostModal">Agregar Figurita</button>
+    <div class="col-sm-12 col-md-3 mt-3" *ngFor="let figuritas of allFiguritas">
+
+      <div class="card">
+        <div class="card-body text-center">
+
+         
+        
+          <h5 class="card-title text-center">{{figuritas.pais}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Cantidad a cambiar {{figuritas.cantidad}}</h6>
+          <p class="card-text">Número de la figurita {{figuritas.numerofigu}}</p>
+          <p class="card-text">Tipo de Figurita  {{figuritas.descripcion}}</p>
+          <p class="card-text">Whatsapp  {{figuritas.contacto}}</p> 
+          
+ 
+
+          <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#editPostModal" (click)="getFigusById(figuritas._id)">Editar</button>
+ 
+
+
+        
+   
+      
+    
+     
+           
+            <button class="btn btn-danger" (click)="deleteFiguritaById(figuritas._id)">Eliminar</button>
+
+
+          </div>
+      
+        </div>
+ 
+       
+
+    </div>
+  
+
+    <app-footer></app-footer>
+
+
+
+  <!-- create post modal -->
+
+  <form [formGroup]="miFormulario">
+
+    
+
+    
+    
+<div class="modal fade" id="createPostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Figurita</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+
+      <option selected>Tipo de Figurita</option>
+
+      <select [class.is-invalid]="miFormulario.get('descripcion')?.touched && miFormulario.get('descripcion')?.invalid"  class="form-select" aria-label="Default select example" formControlName="descripcion"
+      name="description" [(ngModel)]="descripcion">
+       
+        <option value="Jugador">Jugador</option>
+        <option value="Estadio">Estadio</option>
+        <option value="Escudo">Escudo</option>
+        <option value="Legendaria">Legendaria</option>
+        <option value="Coca Cola">Coca Cola</option>
+
+      </select>
+
+      <div class="text-danger"
+      *ngIf="miFormulario.get('descripcion')?.errors">
+      <span>El campo no puede estár vacio</span>
+      </div>
+
+    </div>
+
+
+   
+      <div class="modal-body">
+        <option selected>Pais de la Figurita</option>
+        <div class="form-floating mb-3">
+          <select [class.is-invalid]="miFormulario.get('pais')?.touched && miFormulario.get('pais')?.invalid" formControlName="pais" class="form-select" aria-label="Default select example"
+          name="pais" [(ngModel)]="pais">
+            
+            <option value="Alemania">Alemania</option>
+            <option value="Dinamarca">Dinamarca</option>
+            <option value="Brasil">Brasil</option>
+            <option value="Francia">Francia</option>
+            <option value="Bélgica">Bélgica</option>
+            <option value="Croacia">Croacia</option>
+            <option value="España">España</option>
+            <option value="serbia">serbia</option>
+            <option value="Inglaterra">Inglaterra</option>
+            <option value="Suiza">Suiza</option>
+            <option value="Holanda">Holanda</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Irán">Irán</option>
+            <option value="Corea del Sur">Corea del Sur</option>
+            <option value="Japón">Japón</option>
+            <option value="Arabia Saudita">Arabia Saudita</option>
+            <option value="Ecuador">Ecuador</option>
+            <option value="Uruguay">Uruguay</option>
+            <option value="Canadá">Canadá</option>
+            <option value="Ghana">Ghana</option>
+            <option value="Senegal">Senegal</option>
+            <option value="Portugal">Portugal</option>
+            <option value="Polonia">Polonia</option>
+            <option value="Túnez">Túnez</option>
+            <option value="Marruecos">Marruecos</option>
+            <option value="Camarún">Camarún</option>
+            <option value="México">México</option>
+            <option value="Estados Unidos">Estados Unidos</option>
+            <option value="Gales">Gales</option>
+            <option value="Australia">Australia</option>
+            <option value="Costa Rica">Costa Rica</option>
+            
+          </select>
+
+          <div class="text-danger"
+        *ngIf="miFormulario.get('pais')?.errors">
+        <span>El campo no puede estár vacio</span>
+        </div>
+        
+         
+        </div>
+
+        
+  
+
+      
+
+
+
+
+
+
+
+        <option selected>Número de Figurita</option>
+        <div class="form-floating mb-3">
+          <select [class.is-invalid]="miFormulario.get('numerofigu')?.touched && miFormulario.get('numerofigu')?.invalid" formControlName="numerofigu"class="form-select" aria-label="Default select example"
+          name="numerofigu" [(ngModel)]="numerofigu">
+            
+         
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+           
+            
+          </select>
+          <div class="text-danger"
+          *ngIf="miFormulario.get('numerofigu')?.errors">
+          <span>El campo no puede estár vacio</span>
+          </div>
+
+
+      
+
+         
+          
+        </div>
+        <option selected>Cantidad a Cambiar</option>
+        <div class="form-floating mb-3">
+          <select formControlName="cantidad" class="form-select" aria-label="Default select example"
+          name="cantidad" [(ngModel)]="cantidad"
+          [class.is-invalid]="miFormulario.get('cantidad')?.touched && miFormulario.get('cantidad')?.invalid"
+          
+>
+
+            
+         
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+
+         
+            
+
+            </select>
+            <div class="text-danger"
+*ngIf="miFormulario.get('cantidad')?.errors">
+<span>El campo no puede estár vacio</span>
+</div>
+
+         
+        </div>
+        <option selected>Contacto</option>
+        <div class="form-floating mb-3">
+          <input [class.is-invalid]="miFormulario.get('contacto')?.touched && miFormulario.get('contacto')?.invalid" type="number" 
+          formControlName="contacto"class="form-control" name="contacto" [(ngModel)]="contacto">
+          
+          <label for="floatingInput">Whatsapp</label>
+          
+          
+          <div class="text-danger"
+          *ngIf="miFormulario.get('contacto')?.errors">
+     <span>El campo no puede estár vacio</span>
+    </div>
+        
+  
+  
+  </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          
+         <div [class.is-invalid]="miFormulario.get('contacto')?.touched && miFormulario.get('contacto')?.invalid">
+
+
+
+         </div>
+
+         <div class="text-danger"
+          *ngIf="miFormulario.get('contacto')?.valid">
+    
+     <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="createFiguritas()">Publicar</button>
+    </div>
+
+
+     
+
+
+
+        
+        
+        
+        
+        
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
+  <!-- edit post modal -->
+<div class="modal fade" id="editPostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+
+       
+       
+      </div>
+      <div class="modal-body">
+        <div class="form-floating mb-3">
+      
+
+        <option selected>Pais de la Figurita</option>
+        <div class="form-floating mb-3">
+          <select class="form-select" aria-label="Default select example"
+          name="pais" [(ngModel)]="pais">
+            
+            <option value="Alemania">Alemania</option>
+            <option value="Dinamarca">Dinamarca</option>
+            <option value="Brasil">Brasil</option>
+            <option value="Francia">Francia</option>
+            <option value="Bélgica">Bélgica</option>
+            <option value="Croacia">Croacia</option>
+            <option value="España">España</option>
+            <option value="serbia">serbia</option>
+            <option value="Inglaterra">Inglaterra</option>
+            <option value="Suiza">Suiza</option>
+            <option value="Holanda">Holanda</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Irán">Irán</option>
+            <option value="Corea del Sur">Corea del Sur</option>
+            <option value="Japón">Japón</option>
+            <option value="Arabia Saudita">Arabia Saudita</option>
+            <option value="Ecuador">Ecuador</option>
+            <option value="Uruguay">Uruguay</option>
+            <option value="Canadá">Canadá</option>
+            <option value="Ghana">Ghana</option>
+            <option value="Senegal">Senegal</option>
+            <option value="Portugal">Portugal</option>
+            <option value="Polonia">Polonia</option>
+            <option value="Túnez">Túnez</option>
+            <option value="Marruecos">Marruecos</option>
+            <option value="Camarún">Camarún</option>
+            <option value="México">México</option>
+            <option value="Estados Unidos">Estados Unidos</option>
+            <option value="Gales">Gales</option>
+            <option value="Australia">Australia</option>
+            <option value="Costa Rica">Costa Rica</option>
+            
+          </select>
+        
+         
+        </div>
+        <option selected>Tipo de Figurita</option>
+
+        <select class="form-select" aria-label="Default select example"
+        name="description" [(ngModel)]="descripcion">
+         
+          <option value="Jugador">Jugador</option>
+          <option value="Estadio">Estadio</option>
+          <option value="Escudo">Escudo</option>
+          <option value="Legendaria">Legendaria</option>
+          <option value="Coca Cola">Coca Cola</option>
+
+
+        </select>
+
+        <option selected>Número de Figurita</option>
+        <div class="form-floating mb-3">
+          <select class="form-select" aria-label="Default select example"
+          name="numerofigu" [(ngModel)]="numerofigu">
+            
+         
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+           
+            
+          </select>
+
+
+      
+
+         
+          
+        </div>
+        <option selected>Cantidad a Cambiar</option>
+        <div class="form-floating mb-3">
+          <select class="form-select" aria-label="Default select example"
+          name="cantidad" [(ngModel)]="cantidad">
+            
+         
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+
+            </select>
+
+         
+        </div>
+        <option selected>Contacto</option>
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" id="floatingInput" name="contacto" [(ngModel)]="contacto">
+          <label for="floatingInput">Whatsapp</label>
+        </div>
+         
+
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateFiguritas()">Actualizar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
