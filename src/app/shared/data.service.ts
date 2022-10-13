@@ -23,7 +23,7 @@ export class DataService {
 
 
 
-  // get figus of id
+  // get figus x id
   getFigusById(id : string) : Observable<Figuritas> {
     return this.http.get<Figuritas>(this.url+'/'+id);
   }

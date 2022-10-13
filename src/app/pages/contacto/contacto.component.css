@@ -1,12 +1,20 @@
 
-
+.container{
+  background: #b92b27;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #1565C0, #b92b27);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #1565C0, #b92b27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+    
+  
+  }
 
 
 .contact .info {
+  
     border-top: 3px solid #47b2e4;
     border-bottom: 3px solid #47b2e4;
     padding: 30px;
-    background: #fff;
+   
     width: 100%;
     box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.1);
   }
@@ -30,14 +38,14 @@
     font-size: 22px;
     font-weight: 600;
     margin-bottom: 5px;
-    color: #37517e;
+    color: #f1f3f6;
   }
   
   .contact .info p {
     padding: 0 0 10px 60px;
     margin-bottom: 20px;
     font-size: 14px;
-    color: #6182ba;
+    color: #ffffff;
   }
   
   .contact .info .email p {
@@ -201,7 +209,4 @@
   }
   
 
-body {
-  background-image: url("https://mirror1.cdn.net.ar/mirror1/mirror1/images/05/00/50006_485642bfe777faae1719791becc0222d7950dc475166c2ba702f7bbe4e63d4d9/lg.webp");
 
-}
